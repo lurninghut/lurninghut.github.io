@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_us"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en_us" /><updated>2022-08-07T15:49:34+00:00</updated><id>/feed.xml</id><title type="html">Lurninghut</title><author><name>Gaurav</name></author><entry><title type="html">Sorting algorithms - Quick View</title><link href="/sorting-algorithm-quick-view/" rel="alternate" type="text/html" title="Sorting algorithms - Quick View" /><published>2022-08-04T00:00:00+00:00</published><updated>2022-08-04T00:00:00+00:00</updated><id>/sorting-algorithm-quick-view</id><content type="html" xml:base="/sorting-algorithm-quick-view/"><![CDATA[<p>Sorting is a very important concept when it comes to problem solving during any interview. 
+There are a number of ways in which we can sort a given array but to find the most efficient way needs logical thinking and some imagination to write code around it.
+Sorting has a cost in terms of time and space requirements and any efficient algorithm will try to optimise the time it takes to sort by reducing number of comparisons and any extra space needed. 
+The most common out-of-the-box algorithms provided as part of standard libraries use Quicksort which as an average runtime of O(n log n) where n is the number of elements to be considered for sorting.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sorting</th>
+      <th>Average</th>
+      <th>Worst</th>
+      <th>Use case</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img width="200" />Insertion Sort</td>
+      <td><img width="200" /> N^2</td>
+      <td>N^2</td>
+      <td>When the size of the array is small.</td>
+    </tr>
+    <tr>
+      <td>Quick Sort</td>
+      <td>N log N</td>
+      <td>N^2 (When input array is already sorted and we choose left most element as Pivot or When input array is reverse sorted and we choose rightmost element as pivot)</td>
+      <td>Standard algorithm provided by libraries.<strong>Pros</strong> Can be in place without needing extra space.<strong>Cons</strong> Its not stable which means order of elements is not preserved when they are same.</td>
+    </tr>
+    <tr>
+      <td>Merge Sort</td>
+      <td>N log N</td>
+      <td>N log N</td>
+      <td><strong>Pros</strong> Stable algorithm <strong>Cons</strong> Not in-place. Needs extra space.</td>
+    </tr>
+    <tr>
+      <td>Heap Sort</td>
+      <td>N log N</td>
+      <td>N log N</td>
+      <td><strong>Pros</strong> In place and worst case is better than Quick Sort.</td>
+    </tr>
+    <tr>
+      <td>Radix Sort</td>
+      <td>N * k</td>
+      <td>N * k</td>
+      <td>Its a non comparison sort running in linear time. Pros Stable sort Cons Not in-place</td>
+    </tr>
+  </tbody>
+</table>]]></content><author><name>Gaurav</name></author><category term="Java" /><summary type="html"><![CDATA[Sorting is a very important concept when it comes to problem solving during any interview. There are a number of ways in which we can sort a given array but to find the most efficient way needs logical thinking and some imagination to write code around it. Sorting has a cost in terms of time and space requirements and any efficient algorithm will try to optimise the time it takes to sort by reducing number of comparisons and any extra space needed. The most common out-of-the-box algorithms provided as part of standard libraries use Quicksort which as an average runtime of O(n log n) where n is the number of elements to be considered for sorting.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/assets/images/sorting-algorithms-quick-view/header-1.jpg" /><media:content medium="image" url="/assets/images/sorting-algorithms-quick-view/header-1.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Create jar from Proto files</title><link href="/create-jar-from-proto/" rel="alternate" type="text/html" title="Create jar from Proto files" /><published>2022-01-31T00:00:00+00:00</published><updated>2022-01-31T00:00:00+00:00</updated><id>/create-jar-from-proto</id><content type="html" xml:base="/create-jar-from-proto/"><![CDATA[<p>Protobuf is one of the formats used by programs to communicate with each other over a network. 
+It is Google’s IDL (Interface definition language) to describe the structure of any data which then can be used to generate source code to parse a stream of bytes that represent that structured data.</p>
+
+<p><strong>Demo</strong></p>
+
+<p>Following is a demo of how to create a jar file out of proto files.</p>
+
+<p><a href="https://youtu.be/Hsd-yznn1ms"><img src="/assets/images/create-jar-from-proto/demo.png" height="400px" width="600px" /></a></p>
+
+<p>In this blog we will use a gradle plugin to generate Java class files from a .proto file.</p>
+
+<p>Create a sample gradle project in intellij:</p>
+
+<p><img src="/assets/images/create-jar-from-proto/Screenshot-1.png" alt="Screenshot 1" /></p>
+
+<p>Add following ‘buildscript’ config in the gradle:</p>
+
+<pre>
+    buildscript {
+        repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.12'
+        }
+    }
+</pre>
+
+<p>Add ‘apply plugin’:</p>
+
+<pre>
+    apply plugin: 'com.google.protobuf'
+</pre>
+
+<p>Following are the tasks that will be added to the gradle tasks list:</p>
+
+<p><img src="/assets/images/create-jar-from-proto/Screenshot-2.png" height="400px" width="600px" /></p>
+
+<p>Below is an example of a sample cart.proto file added under ‘proto’ folder inside ‘main’ directory. Note that ‘java_package’ and ‘java_multiple_files’ are attributes to provide guidance to the protobuf compiler while generating class files.</p>
+
+<p><img src="/assets/images/create-jar-from-proto/Screenshot-3.png" height="400px" width="600px" /></p>
+
+<p>Now when we run the generateProto task as shown below, we can see it has generated the corresponding Java files which will be present under the ‘generated’ folder inside build directory.</p>
+
+<p><img src="/assets/images/create-jar-from-proto/Screenshot-4.png" height="400px" width="600px" /></p>
+
+<p>Add following dependency in the project:</p>
+
+<pre>
+dependencies {
+    implementation 'com.google.protobuf:protobuf-java:3.11.4'
+}
+</pre>
+
+<p>Once added, run the ‘jar’ task in gradle and check the build/libs directory. The jar task will generate the jar with compiled class files:</p>
+
+<p><img src="/assets/images/create-jar-from-proto/Screenshot-5.png" height="400px" width="600px" /></p>
+
+<p>The generated jar can be used by any java application to read or create the corresponding proto message in JVM.</p>]]></content><author><name>Gaurav</name></author><category term="Java" /><summary type="html"><![CDATA[Protobuf is one of the formats used by programs to communicate with each other over a network. It is Google’s IDL (Interface definition language) to describe the structure of any data which then can be used to generate source code to parse a stream of bytes that represent that structured data.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/assets/images/create-jar-from-proto/header-1.png" /><media:content medium="image" url="/assets/images/create-jar-from-proto/header-1.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Motivation for Kafka</title><link href="/motivation-for-kafka/" rel="alternate" type="text/html" title="Motivation for Kafka" /><published>2021-10-09T00:00:00+00:00</published><updated>2021-10-09T00:00:00+00:00</updated><id>/motivation-for-kafka</id><content type="html" xml:base="/motivation-for-kafka/"><![CDATA[<p>If you wonder what are different industries doing with Apache Kafka, here are some insights.</p>
+
+<p>Remember good old days when you would call your friend.</p>
+
+<p>Tom             calling                Ryan   </p>
+
+<p><img src="/assets/images/motivation-for-kafka/Screenshot-1.png" height="200px" width="300px" /></p>
+
+<p>The above conversation would let you know how your friend is doing, what are the life events he/she is experiencing and how much they love their newly bought car.</p>
+
+<p>But there is a paradigm shift from such static view to a new world of social media.</p>
+
+<p>Tom              views live feed of            Ryan</p>
+
+<p><img src="/assets/images/motivation-for-kafka/Screenshot-2.png" height="200px" width="300px" /></p>
+
+<p>With the help of social media application, we can now see a constant feed of all the activities of our friends.</p>
+
+<p>Same view is true for how we consume news.</p>
+
+<p>Reading newspaper              to         Consuming news feeds</p>
+
+<p><img src="/assets/images/motivation-for-kafka/Screenshot-3.png" height="200px" width="300px" />
+<img src="/assets/images/motivation-for-kafka/Screenshot-4.png" height="200px" width="300px" /></p>
+
+<p>If we try to understand the changes above from an application data perspective, it means that rather than showing a static view/snapshot/summary of the data at a particular time, there is a need to constantly showing data flowing continuously as a stream of discrete events. Such a need has caused a paradigm shift known as Event Stream Processing in the world of application development. Another important aspect of these applications is to address the need of Real time processing of these events to show the current state of the data and also store these events to show historical view of the data. If we think about all the latest applications installed in our mobile phones like Facebook, Instagram, twitter, LinkedIn, Netflix, Uber, Uber eats etc. they all are inherently event-driven. Think about seeing continuous delivery updates you get when order your food item, dynamic suggestions you see when you scroll through Netflix and so many other such use cases on all successful digital businesses applications.</p>
+
+<p>To address all such need, a Single Platform was required which could do real time stream processing and store events and connect all the features/use-cases together for any application. Apache Kafka arrived in the scene as one such platform and has now become a de facto standard  for real time event processing.</p>
+
+<p><img src="/assets/images/motivation-for-kafka/Screenshot-5.png" alt="Screenshot 5" /></p>
+
+<p>Here is a set of companies who use Kafka as their Event Streaming Platform.</p>
+
+<p><img src="/assets/images/motivation-for-kafka/Screenshot-6.png" alt="Screenshot 6" /></p>
+
+<p>Its a mix of companies which exists from day one of digital world to very fresh startups.</p>
+
+<h3 id="example-use-cases">Example Use-cases </h3>
+
+<p><strong>Real time fraud detection</strong></p>
+
+<p>For any financial services company that issues credit card, they need to find the fraud happening in real time rather than finding it out next day after running some batch job, and notifying the end customer within seconds of the any potential fraudulent transaction. </p>
+
+<p><strong>Automotive</strong></p>
+
+<p><img src="/assets/images/motivation-for-kafka/Screenshot-7.png" height="200px" width="300px" /></p>
+
+<p>All the high end cars these days have lot of Internet Of Things (IOT) devices which will have connectivity to a data network. All those devices and computers record enormous amount of data for reporting purpose and relay it back to a central head quarter or sometimes allow two way communication where services can respond to the data reported giving a very pleasant experience overall. Fundamentally, all these things have been built on top an event streaming platform.</p>
+
+<p><strong>Ecommerce</strong></p>
+
+<p><img src="/assets/images/motivation-for-kafka/Screenshot-8.png" height="200px" width="300px" /></p>
+
+<p>E-commerce is full of events where people navigate through the website, search, checkout, provide reviews and all these events can be analysed in real time to determine how products are performing, behaviour of the customer and much more which is hard to do with traditional databases and where Event streaming platforms help in quickly implementing such features with less engineering efforts.</p>
+
+<p><strong>Customer 360</strong></p>
+
+<p><img src="/assets/images/motivation-for-kafka/Screenshot-9.png" height="200px" width="300px" /></p>
+
+<p>Typically there will be many customer database tables in an organisation to store data about customers which will be scattered among lines of business and departments providing different views to each of them. Even streaming platform solves the problem of getting an integrated view of all the customer which can help in up-sell and cross-sell and save lot of costs.</p>
+
+<p><strong>Core Banking</strong></p>
+
+<p><img src="/assets/images/motivation-for-kafka/Screenshot-10.png" height="200px" width="300px" /></p>
+
+<p>If you are thinking how come banks are real time when we it takes 2 days for banks to transfer payments between accounts, then yes, the payment gateways are getting smarter day by day and very soon Kafka based solutions will solve the problem of delays in bank account payment transfer.</p>
+
+<p><strong>Health Care</strong></p>
+
+<p><img src="/assets/images/motivation-for-kafka/Screenshot-11.png" height="200px" width="300px" />
+<img src="/assets/images/motivation-for-kafka/Screenshot-12.png" height="200px" width="300px" /></p>
+
+<p>Just like automotive industry (Cars with IOT devices) , health care industry is also using a lot of IOT devices for monitoring and using Kafka to do data analysis and generate information that helps healthcare professionals to take better care of patients.</p>
+
+<p><strong>Online Gaming</strong></p>
+
+<p><img src="/assets/images/motivation-for-kafka/Screenshot-15.png" height="200px" width="300px" /></p>
+
+<p>Online gaming is fundamentally event driven as it generates a lot events when a player moves or presses a button. An Event streaming platform can consume these events and do a lot of things like optimisation, enabling in-game purchases by determining who is doing what.</p>
+
+<p><strong>Government</strong></p>
+
+<p><img src="/assets/images/motivation-for-kafka/Screenshot-14.png" height="200px" width="300px" /></p>
+
+<p>Government agencies leveraging Event streaming platforms to make more effective use of their data which is critical to accountability, public policies, program effectiveness, and mission success.</p>
+
+<p><strong>Financial Services</strong></p>
+
+<p><img src="/assets/images/motivation-for-kafka/Screenshot-13.png" height="200px" width="300px" /></p>
+
+<p>Financial services require to provide enhanced customer experience by enabling a single strategy for communications with customers using mobile devices, securing environment using improved fraud detection engines. Kafka helps migrating all legacy systems by providing solutions around event processing.</p>
+
+<p>Hope all these examples give a fair idea of what industries are doing with Apache Kafka.</p>]]></content><author><name>Gaurav</name></author><category term="Kafka" /><summary type="html"><![CDATA[If you wonder what are different industries doing with Apache Kafka, here are some insights.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/assets/images/motivation-for-kafka/header-1.png" /><media:content medium="image" url="/assets/images/motivation-for-kafka/header-1.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Github Actions - Create Automatic Pull Request</title><link href="/github-actions-create-automatic-pull-request/" rel="alternate" type="text/html" title="Github Actions - Create Automatic Pull Request" /><published>2021-10-02T00:00:00+00:00</published><updated>2021-10-02T00:00:00+00:00</updated><id>/github-actions-create-automatic-pull-request</id><content type="html" xml:base="/github-actions-create-automatic-pull-request/"><![CDATA[<p>While working with automatic workflows using Github actions, there can be scenarios where some changes are to be done in the repository during the execution of the build steps. 
+A very common example is updating information of the user to a file ‘Author’ in the code base every time a commit is pushed. 
+In this demo we will also try to create a PR automatically by creating a branch which will have one single commit to a file called ‘Author’ with the information of the user who pushed the recent commit to main branch.</p>
+
+<h3 id="demo">Demo</h3>
+
+<p><a href="https://youtu.be/NfsrMix5Qvc"><img src="/assets/images/github-actions-create-automatic-pull-request/youtube-screenshot.png" alt="Demo" /></a></p>
+
+<p>We will proceed incrementally with the configuration file changes. Let’s create a new workflow file under .github/workflows</p>
+
+<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-1.png" alt="Screenshot 1" /></p>
+
+<p>Add name and an event which we care for during our workflow:</p>
+
+<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-2.png" alt="Screenshot 2" /></p>
+
+<p><strong><em>actions/checkout@v2</em></strong></p>
+
+<p>Add first step as part of the jobs where we will checkout the code from main branch:</p>
+
+<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-3.png" alt="Screenshot 3" /></p>
+
+<p><strong><em>rlespinasse/git-commit-data-action@v1.x</em></strong></p>
+
+<p>Then we will add another action step which will export details of the recent commit as environment variables like GIT_COMMIT_AUTHOR_NAME.</p>
+
+<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-4.png" alt="Screenshot 4" /></p>
+
+<p>Then we will add details extracted from previous step to Author file in the repository:</p>
+
+<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-6.png" alt="Screenshot 6" /></p>
+
+<p><strong><em>peter-evans/create-pull-request@v3</em></strong></p>
+
+<p>And as part of final step we will use action which will create a new branch, commit the change added in the previous step to the Author file and create the pull request. The ‘delete-branch’ config will ensure that the branch will be deleted after pull request is closed.</p>
+
+<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-5.png" alt="Screenshot 5" /></p>
+
+<p>When we finish with this workflow file, we will commit it to the repo and push the commit to Github main branch. The push will trigger the workflow in Github as follows:</p>
+
+<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-7.png" alt="Screenshot 7" /></p>
+
+<p>And once the workflow is finished we can navigate to the pull request tab to see the created pull request:</p>
+
+<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-8.png" alt="Screenshot 8" /></p>
+
+<p>The complete workflow file is as follows:</p>
+
+<details>
+    <summary>Expand to see code!</summary>
+    
+    <pre>
+    
+        name: Demo to create automatic PR
+        
+        on:
+        push:
+        branches:
+        - main
+        
+        jobs:
+        updateAuthor:
+        runs-on: ubuntu-latest
+        steps:
+        - name: checking out code
+        uses: actions/checkout@v2
+        
+        - name: extract git commit data
+        uses: rlespinasse/git-commit-data-action@v1.x
+        
+        - name: Update author information
+        run: echo $ &gt; AUTHOR
+        
+        - name: Raise PR
+        uses: peter-evans/create-pull-request@v3
+        with:
+        branch: "auto-pr-branch"
+        base: main
+        title: "demo for auto pr"
+        committer: $ &lt;$"&gt;
+        author: $ &lt;$"&gt;
+        body:
+        This is to show automatic PR creation
+        token: $
+        delete-branch: true
+    </pre>
+</details>
+
+<p>So we saw how easy it is to create an automatic pull request using appropriate Github actions.</p>]]></content><author><name>Gaurav</name></author><category term="Git" /><summary type="html"><![CDATA[While working with automatic workflows using Github actions, there can be scenarios where some changes are to be done in the repository during the execution of the build steps. A very common example is updating information of the user to a file ‘Author’ in the code base every time a commit is pushed. In this demo we will also try to create a PR automatically by creating a branch which will have one single commit to a file called ‘Author’ with the information of the user who pushed the recent commit to main branch.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/assets/images/github-actions-create-automatic-pull-request/header-1.svg" /><media:content medium="image" url="/assets/images/github-actions-create-automatic-pull-request/header-1.svg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Github Actions: Building Spring boot application</title><link href="/github-actions-spring-boot/" rel="alternate" type="text/html" title="Github Actions: Building Spring boot application" /><published>2021-10-02T00:00:00+00:00</published><updated>2021-10-02T00:00:00+00:00</updated><id>/github-actions-spring-boot</id><content type="html" xml:base="/github-actions-spring-boot/"><![CDATA[<p>Github now a days is not just used as a central Git repository by the organisations but also as a tool for orchestration of CI/CD pipelines. Github actions automate all the software development workflows and enable build, test and deployment right from Github. In the demo we will see how we can use Github actions for basic development tasks by automating them using some configuration files.</p>
+
+<p><strong>Demo</strong></p>
+
+<p><a href="https://youtu.be/mc7k2zOcQsg"><img src="/assets/images/github-actions-spring-boot/demo.png" height="400px" width="600px" /></a></p>
+
+<p><strong>Resources</strong></p>
+
+<p>Github account : This will host the repository for our sample application which is to be built.</p>
+
+<p><strong>Sample spring boot application</strong></p>
+
+<p>Create a project from start.spring.io website as follows:</p>
+
+<p>Note that we chose a Gradle project with spring web as a dependency.</p>
+
+<p><img src="/assets/images/github-actions-spring-boot/Screenshot-1.png" height="400px" width="600px" /></p>
+
+<p>Open the downloaded project in Intellij IDE</p>
+
+<p><img src="/assets/images/github-actions-spring-boot/Screenshot-2.png" height="400px" width="600px" /></p>
+
+<p>Create html page under static directory in resources folder.</p>
+
+<p>Run the application and go to the browser to load the html page as follows:</p>
+
+<p><img src="/assets/images/github-actions-spring-boot/Screenshot-3.png" height="400px" width="600px" /></p>
+
+<p><strong>Github Workflow Changes</strong></p>
+
+<p>Create a repository in Github</p>
+
+<p><img src="/assets/images/github-actions-spring-boot/Screenshot-4.png" height="400px" width="600px" /></p>
+
+<p>Push the local code to the repository using the commands mentioned as part of repository creation.</p>
+
+<p><img src="/assets/images/github-actions-spring-boot/Screenshot-5.png" height="400px" width="600px" /></p>
+
+<p>Once we push the local changes we will see our repository has all the code:</p>
+
+<p><img src="/assets/images/github-actions-spring-boot/Screenshot-6.png" height="400px" width="600px" /></p>
+
+<p>In our local repository lets create a new directory as .github/workflows:</p>
+
+<p><img src="/assets/images/github-actions-spring-boot/Screenshot-7.png" height="400px" width="600px" /></p>
+
+<p>Create a new file called demo.yml inside .github/workflows folder with the content as follows:</p>
+
+<p><img src="/assets/images/github-actions-spring-boot/Screenshot-8.png" height="400px" width="600px" /></p>
+
+<p>The demo.yml file created above will be executed by Github actions to run our build code. The code as text is as follows:</p>
+
+<pre>
+    name: Demo to setup a project with github actions
+    
+    on:
+    push:
+    branches:
+    - main
+    
+    jobs:
+    build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: checking out code
+    uses: actions/checkout@v2
+    
+    - name: Setting up java env
+    uses: actions/setup-java@v1
+    with:
+    java-version: 11
+    
+    - name: grant permissions
+    run: chmod +x gradlew
+    
+    - name: build action
+    run: ./gradlew build
+</pre>
+
+<p>Once the file is created, add it to local git by committing the changes:</p>
+
+<p><img src="/assets/images/github-actions-spring-boot/Screenshot-9.png" height="400px" width="600px" /></p>
+
+<p>Once committed, just push the code to the Github repo:</p>
+
+<p><img src="/assets/images/github-actions-spring-boot/Screenshot-10.png" height="400px" width="600px" /></p>
+
+<p>Once pushed we can to the Github UI console and check the Actions tab:</p>
+
+<p><img src="/assets/images/github-actions-spring-boot/Screenshot-11.png" height="400px" width="600px" /></p>
+
+<p>All the above demonstrated how we can build any Spring boot app using Github Actions.</p>]]></content><author><name>Gaurav</name></author><category term="GIT" /><summary type="html"><![CDATA[Github now a days is not just used as a central Git repository by the organisations but also as a tool for orchestration of CI/CD pipelines. Github actions automate all the software development workflows and enable build, test and deployment right from Github. In the demo we will see how we can use Github actions for basic development tasks by automating them using some configuration files.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/assets/images/github-actions-spring-boot/header-1.png" /><media:content medium="image" url="/assets/images/github-actions-spring-boot/header-1.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">XSS - Cross site scripting Java Demo</title><link href="/xss-cross-site-scripting-java-demo/" rel="alternate" type="text/html" title="XSS - Cross site scripting Java Demo" /><published>2021-09-24T00:00:00+00:00</published><updated>2021-09-24T00:00:00+00:00</updated><id>/xss-cross-site-scripting-java-demo</id><content type="html" xml:base="/xss-cross-site-scripting-java-demo/"><![CDATA[<p>Ever wondered how hackers get access to someone’s account on any website? 
+Or what really happens when you click on an email link received from an unknown address which your organisation 
+requests you not to click and report their cyber security team as part of mandatory security training. 
+The reason is to prevent you from becoming a victim of cross site scripting practice used by hackers. 
+Let’s create real applications and observe the practice using java programming platform.</p>
+
+<p><img src="/assets/images/xss-cross-site-scripting-java-demo/cross-site-scripting-example1.png" alt="example 1" /></p>
+
+<h3 id="demo">Demo</h3>
+<p><a href="https://youtu.be/VBSmeyDQRfM"><img src="/assets/images/xss-cross-site-scripting-java-demo/xss-cross-site-demo.png" alt="Demo" /></a></p>
+
+<p>The demo will show how a customer of a banking site becomes a victim of different cross site scripting practices. We will consider following parties involved:</p>
+
+<p>Banking Website
+Attacker Website
+Victim’s Browser</p>
+
+<h3 id="create-http-servers-in-java">Create HTTP Servers in Java</h3>
+
+<p>Server for Banking website:</p>
+
+<details>
+  <summary>Click to expand code!</summary>
+  <pre>
+  
+        package com.banking.application;
+        
+        import com.sun.net.httpserver.HttpExchange;
+        import com.sun.net.httpserver.HttpHandler;
+        
+        import java.io.IOException;
+        import java.io.OutputStream;
+        import java.net.InetSocketAddress;
+        import java.util.concurrent.Executors;
+        import java.util.concurrent.ThreadPoolExecutor;
+        
+        public class BankHttpServer {
+            public static void main(String[] args) throws IOException {
+                System.out.println("Starting banking website server");
+                com.sun.net.httpserver.HttpServer server = com.sun.net.httpserver.HttpServer.create(new InetSocketAddress("localhost", 8001), 0);
+                ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(10);
+        
+                server.createContext("/banking", new BankHttpServer().new MyHttpHandler());
+        
+                server.setExecutor(threadPoolExecutor);
+        
+                server.start();
+        
+                System.out.println(" Server started on port 8001");
+            }
+        
+            public class MyHttpHandler implements HttpHandler {
+                @Override
+                public void handle(HttpExchange exchange) throws IOException {
+                    if ("GET".equals(exchange.getRequestMethod()) &amp;&amp; exchange.getRequestURI().getQuery() != null &amp;&amp; exchange.getRequestURI().getQuery().contains("productName")) {
+                        handleResponse(exchange, getSearchPage(exchange.getRequestURI().getQuery()));
+                    } else {
+                        handleResponse(exchange, getDefaultPage());
+                    }
+                }
+        
+                private String getDefaultPage() {
+                    StringBuilder htmlBuilder = new StringBuilder();
+                    htmlBuilder.append("<html><body>&lt;form action=\"\" method=\"get\"&gt;\n" +
+                        " <div>\n" +
+                        " &lt;label for=\"name\"&gt;Product Name: &lt;/label&gt;\n" +
+                        " &lt;input size=\"100\" type=\"text\" name=\"productName\" id=\"productName\"&gt;\n" +
+                        " &lt;input type=\"submit\" value=\"Search\"&gt;\n" +
+                        " </div>\n" +
+                        "&lt;/form&gt;").append("</body></html>");
+                    return htmlBuilder.toString();
+                }
+        
+                private String getSearchPage(String query) {
+                    System.out.println("query: " + query);
+                    query = query.substring(query.indexOf("=") + 1);
+                    String searchParam = query.replace("+", " ");
+                    StringBuilder htmlBuilder = new StringBuilder();
+                    htmlBuilder.append("<html><body>&lt;form action=\"search\" method=\"get\"&gt;\n" +
+                        " <div><span>").append(searchParam).append("</span></div></body></html>");
+                    return htmlBuilder.toString();
+                }
+        
+                private void handleResponse(HttpExchange exchange, String htmlResponse) throws IOException {
+                    OutputStream outputStream = exchange.getResponseBody();
+                    exchange.sendResponseHeaders(200, htmlResponse.length());
+                    outputStream.write(htmlResponse.getBytes());
+                    outputStream.flush();
+                    outputStream.close();
+                }
+            }
+        }
+  </pre>
+</details>
+
+<p>The above code creates an http server running on port 8001. It serves a very basic webpage at http://localhost:8001/banking as shown below:</p>
+
+<p><img src="/assets/images/xss-cross-site-scripting-java-demo/banking-1.png" alt="Banking 1" /></p>
+
+<p>The issue with the website implementation is the use of free input text box where a user is allowed to type anything. Let’s do an example search by typing a banking product name.</p>
+
+<p><img src="/assets/images/xss-cross-site-scripting-java-demo/banking.gif" alt="Banking" /></p>
+
+<p>As we can see the response of the website is the name of product and any hacker would see this and try something crazy like this:</p>
+
+<p><img src="/assets/images/xss-cross-site-scripting-java-demo/banking2.gif" alt="Banking 2" /></p>
+
+<p>Since the website was returning the text as is without encoding, it was treated as a legitimate script code by the browser and it executed the code which displayed the alert message. This is a very powerful hacking clue which can be leveraged to read out confidential cookies from the local browser session and sent back to the hacker. Let’s create another server application (Attacker’s website) as follows:</p>
+
+<details>
+    <summary>Expand to see the code!</summary>
+    
+    <pre>
+        
+        package com.banking.application;
+
+        import com.sun.net.httpserver.HttpExchange;
+        import com.sun.net.httpserver.HttpHandler;
+        
+        import java.io.IOException;
+        import java.io.OutputStream;
+        import java.net.InetSocketAddress;
+        import java.util.concurrent.Executors;
+        import java.util.concurrent.ThreadPoolExecutor;
+        
+        public class AttackerHttpServer {
+        
+            public static void main(String[] args) throws IOException {
+                System.out.println("Starting attacker website server");
+                com.sun.net.httpserver.HttpServer server = com.sun.net.httpserver.HttpServer.create(new InetSocketAddress("localhost", 8002), 0);
+                ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(10);
+        
+                server.createContext("/attacker", new AttackerHttpServer().new MyHttpHandler());
+        
+                server.setExecutor(threadPoolExecutor);
+        
+                server.start();
+        
+                System.out.println(" Server started on port 8002");
+            }
+        
+            public class MyHttpHandler implements HttpHandler {
+        
+                @Override
+                public void handle(HttpExchange exchange) throws IOException {
+                    handleResponse(exchange, getDefaultPage());
+                }
+        
+                private String getDefaultPage() {
+                    StringBuilder htmlBuilder = new StringBuilder();
+                    htmlBuilder.append("alert('Hacked');window.location.href = \"http://localhost:8001/banking\";");
+                    return htmlBuilder.toString();
+                }
+        
+                private void handleResponse(HttpExchange exchange, String htmlResponse) throws IOException {
+                    OutputStream outputStream = exchange.getResponseBody();
+                    exchange.getResponseHeaders().add("Content-Type", "application/javascript");
+                    exchange.sendResponseHeaders(200, htmlResponse.length());
+                    outputStream.write(htmlResponse.getBytes());
+                    outputStream.flush();
+                    outputStream.close();
+                }
+            }
+        }
+        
+    </pre>
+    
+</details>
+
+<p>The important code snippet from the above code is the getDefaultPage() method which is showing an alert and then redirecting to the banking site:</p>
+
+<pre>
+
+htmlBuilder.append("alert('Hacked');window.location.href = \"http://localhost:8001/banking\";");
+
+</pre>
+
+<p>Now execution of the above code from a webpage served by the banking site can be done as follows:</p>
+
+<p><img src="/assets/images/xss-cross-site-scripting-java-demo/banking3-2.gif" alt="Banking 3" /></p>
+
+<p>Notice that the url which was sent to the ‘banking’ website as a get request has the script tag embedded.</p>
+
+<p><img src="/assets/images/xss-cross-site-scripting-java-demo/Screen-Shot-1.png" alt="Screen shot 1" /></p>
+
+<p>Now I create an email with the link as follows and send it to ‘John’ with a very tempting message pushing him to click on the link:</p>
+
+<p><img src="/assets/images/xss-cross-site-scripting-java-demo/email.png" alt="Email" /></p>
+
+<p>Bingo!!!, attacker is able to execute code from his website on victim’s browser with the help of the banking website.</p>
+
+<h3 id="solution">Solution</h3>
+
+<p>How can banking website ensure that it doesn’t allow such attack? The solution is to use the practice of HTML sanitisation.
+There are open source tools and projects that can be used to sanitise an HTML document by removing threatening tags like</p>
+<pre><code class="language-javascript">&lt;script&gt;, &lt;link&gt;, &lt;object&gt;, &lt;embed&gt;
+</code></pre>
+<p>before sending it back as a response. 
+OWASP is an online community that produces freely-available articles, methodologies, documentation, tools, and technologies in the field of web application security. 
+A very useful project is ‘OWASP Java HTML Sanitizer’ which provides implementation and also allows custom policies to be configured.</p>
+
+<p><img src="/assets/images/xss-cross-site-scripting-java-demo/Screen-Shot-2.png" alt="Screenshot 2" /></p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>“nothing is free in this world, just remember everything comes with a price”, so don’t click the links from unknown senders.</p>]]></content><author><name>Gaurav</name></author><category term="Java" /><category term="Security" /><summary type="html"><![CDATA[Ever wondered how hackers get access to someone’s account on any website? Or what really happens when you click on an email link received from an unknown address which your organisation requests you not to click and report their cyber security team as part of mandatory security training. The reason is to prevent you from becoming a victim of cross site scripting practice used by hackers. Let’s create real applications and observe the practice using java programming platform.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/assets/images/xss-cross-site-scripting-java-demo/cross-site-scripting-examples.svg" /><media:content medium="image" url="/assets/images/xss-cross-site-scripting-java-demo/cross-site-scripting-examples.svg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
