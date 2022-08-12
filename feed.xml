@@ -1,4 +1,118 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_us"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en_us" /><updated>2022-08-08T18:16:06+00:00</updated><id>/feed.xml</id><title type="html">Lurninghut</title><author><name>Gaurav</name></author><entry><title type="html">Sorting algorithms - Quick View</title><link href="/sorting-algorithm-quick-view/" rel="alternate" type="text/html" title="Sorting algorithms - Quick View" /><published>2022-08-04T00:00:00+00:00</published><updated>2022-08-04T00:00:00+00:00</updated><id>/sorting-algorithm-quick-view</id><content type="html" xml:base="/sorting-algorithm-quick-view/"><![CDATA[<p>Sorting is a very important concept when it comes to problem solving during any interview. 
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_us"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en_us" /><updated>2022-08-12T21:54:21+00:00</updated><id>/feed.xml</id><title type="html">Lurninghut</title><author><name>Gaurav</name></author><entry><title type="html">Sorting With While Loop</title><link href="/sorting-with-while-loop/" rel="alternate" type="text/html" title="Sorting With While Loop" /><published>2022-08-12T00:00:00+00:00</published><updated>2022-08-12T00:00:00+00:00</updated><id>/sorting-with-while-loop</id><content type="html" xml:base="/sorting-with-while-loop/"><![CDATA[<p>##Sorting with while loops
+While loops help with running code block repeatedly over a condition
+until failure of the condition. Sorting algorithms need to perform repeated
+comparisons and swapping operations over certain conditions and sometimes
+it becomes difficult to understand the loop start and end indexes. While loops 
+help in exactly pointing out what indexes mean and how they are changed within the 
+algorithm. Following are 3 common sorting algorithms which will use while loops
+to perform sorting:
+####Bubble Sort
+Bubble sort’s core logic it do N-1 loops over the set of N items and on each pass move the highest element to the
+end of the array by comparing and swapping the neighbouring item.</p>
+
+<p>Example of 1st Pass :</p>
+
+<p>int[] data = {4,3,2,1}</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>i0</th>
+      <th>i1</th>
+      <th>i2</th>
+      <th>i3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><em><strong>4</strong></em></td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><em><strong>4</strong></em></td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2</td>
+      <td><em><strong>4</strong></em></td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td><em><strong>4</strong></em></td>
+    </tr>
+  </tbody>
+</table>
+
+<pre><code class="language-java">private static void bubble(int[] data) {
+        int outerStart = 0;
+        int outerEnd = data.length - 1;
+        int innerStart;
+        int innerEnd;
+
+        while (outerStart &lt;= outerEnd) {
+            innerStart = 1;
+            innerEnd = outerEnd - outerStart;
+            while (innerStart &lt;= innerEnd) {
+                if (data[innerStart] &lt; data[innerStart - 1]) {
+                    int temp = data[innerStart];
+                    data[innerStart] = data[innerStart - 1];
+                    data[innerStart - 1] = temp;
+                }
+                innerStart++;
+            }
+            outerStart++;
+        }
+    }
+</code></pre>
+<p>####Insertion Sort
+Insertion sort picks an element (key) and tries to find the correct index on its left subarray where the key belongs and then does the swapping. This results in less number of swappings than bubble sort.</p>
+
+<pre><code class="language-java">private static void insertion(int[] data) {
+        int outerStart = 1;
+        int outerEnd = data.length - 1;
+        while (outerStart &lt;= outerEnd) {
+            int innerStart = outerStart;
+            int key = data[innerStart];
+            while (innerStart &gt; 0 &amp;&amp; key &lt; data[innerStart - 1]) {
+                data[innerStart] = data[innerStart - 1];
+                innerStart--;
+            }
+            data[innerStart] = key;
+            outerStart++;
+        }
+    }
+</code></pre>
+<p>####Selection Sort
+Selection sort is the simplest to code, where, for every pass in the loop, index of the minimum element
+in the pass is found and then the item is swapped with the current loop index item.</p>
+<pre><code class="language-java">private static void selection(int[] data) {
+        int outerStart = 0;
+        int outerEnd = data.length - 2;
+        while (outerStart &lt;= outerEnd) {
+            int innerStart = outerStart;
+            int innerEnd = data.length - 1;
+            int smallIndex = innerStart;
+            while (innerStart &lt;= innerEnd) {
+                if (data[innerStart] &lt; data[smallIndex]) {
+                    smallIndex = innerStart;
+                }
+                innerStart++;
+            }
+            int temp = data[outerStart];
+            data[outerStart] = data[smallIndex];
+            data[smallIndex] = temp;
+            outerStart++;
+        }
+    }
+</code></pre>]]></content><author><name>Gaurav</name></author><summary type="html"><![CDATA[##Sorting with while loops While loops help with running code block repeatedly over a condition until failure of the condition. Sorting algorithms need to perform repeated comparisons and swapping operations over certain conditions and sometimes it becomes difficult to understand the loop start and end indexes. While loops help in exactly pointing out what indexes mean and how they are changed within the algorithm. Following are 3 common sorting algorithms which will use while loops to perform sorting: ####Bubble Sort Bubble sort’s core logic it do N-1 loops over the set of N items and on each pass move the highest element to the end of the array by comparing and swapping the neighbouring item.]]></summary></entry><entry><title type="html">Sorting algorithms - Quick View</title><link href="/sorting-algorithm-quick-view/" rel="alternate" type="text/html" title="Sorting algorithms - Quick View" /><published>2022-08-04T00:00:00+00:00</published><updated>2022-08-04T00:00:00+00:00</updated><id>/sorting-algorithm-quick-view</id><content type="html" xml:base="/sorting-algorithm-quick-view/"><![CDATA[<p>Sorting is a very important concept when it comes to problem solving during any interview. 
 There are a number of ways in which we can sort a given array but to find the most efficient way needs logical thinking and some imagination to write code around it.
 Sorting has a cost in terms of time and space requirements and any efficient algorithm will try to optimise the time it takes to sort by reducing number of comparisons and any extra space needed. 
 The most common out-of-the-box algorithms provided as part of standard libraries use Quicksort which as an average runtime of O(n log n) where n is the number of elements to be considered for sorting.</p>
