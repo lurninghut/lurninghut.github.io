@@ -5,25 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="/assets/images/favicon.ico">
 
-<title>Sorting with while loops | Lurninghut</title>
+<title>Java LocalDateTime vs ZonedDateTime | Lurninghut</title>
 
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Sorting with while loops | Lurninghut</title>
+<title>Java LocalDateTime vs ZonedDateTime | Lurninghut</title>
 <meta name="generator" content="Jekyll v4.2.2" />
-<meta property="og:title" content="Sorting with while loops" />
+<meta property="og:title" content="Java LocalDateTime vs ZonedDateTime" />
 <meta name="author" content="Gaurav" />
 <meta property="og:locale" content="en_us" />
-<meta name="description" content="While loops help with running code block repeatedly over a condition until failure of the condition. Sorting algorithms need to perform repeated comparisons and swapping operations over certain conditions and sometimes it becomes difficult to understand the loop start and end indexes. While loops help in exactly pointing out what indexes mean and how they are changed within the algorithm. Following are 3 common sorting algorithms which will use while loops to perform sorting: Bubble Sort Bubble sort’s core logic it do N-1 loops over the set of N items and on each pass move the highest element to the end of the array by comparing and swapping the neighbouring item." />
-<meta property="og:description" content="While loops help with running code block repeatedly over a condition until failure of the condition. Sorting algorithms need to perform repeated comparisons and swapping operations over certain conditions and sometimes it becomes difficult to understand the loop start and end indexes. While loops help in exactly pointing out what indexes mean and how they are changed within the algorithm. Following are 3 common sorting algorithms which will use while loops to perform sorting: Bubble Sort Bubble sort’s core logic it do N-1 loops over the set of N items and on each pass move the highest element to the end of the array by comparing and swapping the neighbouring item." />
+<meta name="description" content="Very often we code applications in the real world where we need to store a date along with the time. For e.g. Creating an application for Astrology where we want to store the date of birth and time for a person. Or, an appointment application for a pet clinic where we want to store the date and time for an appointment. Do we see any need of asking timezone as a data point to be captured? No." />
+<meta property="og:description" content="Very often we code applications in the real world where we need to store a date along with the time. For e.g. Creating an application for Astrology where we want to store the date of birth and time for a person. Or, an appointment application for a pet clinic where we want to store the date and time for an appointment. Do we see any need of asking timezone as a data point to be captured? No." />
 <meta property="og:site_name" content="Lurninghut" />
-<meta property="og:image" content="/assets/images/sorting-with-while-loop/while-loop.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-08-12T00:00:00+00:00" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="/assets/images/sorting-with-while-loop/while-loop.png" />
-<meta property="twitter:title" content="Sorting with while loops" />
+<meta property="article:published_time" content="2022-11-09T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Java LocalDateTime vs ZonedDateTime" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Gaurav"},"dateModified":"2022-08-12T00:00:00+00:00","datePublished":"2022-08-12T00:00:00+00:00","description":"While loops help with running code block repeatedly over a condition until failure of the condition. Sorting algorithms need to perform repeated comparisons and swapping operations over certain conditions and sometimes it becomes difficult to understand the loop start and end indexes. While loops help in exactly pointing out what indexes mean and how they are changed within the algorithm. Following are 3 common sorting algorithms which will use while loops to perform sorting: Bubble Sort Bubble sort’s core logic it do N-1 loops over the set of N items and on each pass move the highest element to the end of the array by comparing and swapping the neighbouring item.","headline":"Sorting with while loops","image":"/assets/images/sorting-with-while-loop/while-loop.png","mainEntityOfPage":{"@type":"WebPage","@id":"/sorting-with-while-loop/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/logo.png"},"name":"Gaurav"},"url":"/sorting-with-while-loop/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Gaurav"},"dateModified":"2022-11-09T00:00:00+00:00","datePublished":"2022-11-09T00:00:00+00:00","description":"Very often we code applications in the real world where we need to store a date along with the time. For e.g. Creating an application for Astrology where we want to store the date of birth and time for a person. Or, an appointment application for a pet clinic where we want to store the date and time for an appointment. Do we see any need of asking timezone as a data point to be captured? No.","headline":"Java LocalDateTime vs ZonedDateTime","mainEntityOfPage":{"@type":"WebPage","@id":"/localdatetime-vs-zoneddatetime/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/logo.png"},"name":"Gaurav"},"url":"/localdatetime-vs-zoneddatetime/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -121,7 +119,7 @@
         
 		<div class="col-sm-12">
             <!-- Post Featured Image -->
-			<img class="featured-image img-fluid rounded" src="/assets/images/sorting-with-while-loop/while-loop.png" alt="Sorting with while loops">
+			
 			<!-- End Featured Image -->
 			<div class="mainheading">             
                 
@@ -139,7 +137,7 @@
                 <!-- End Categories -->
                 
                 <!-- Post Title -->
-				<h1 class="posttitle">Sorting with while loops</h1> 
+				<h1 class="posttitle">Java LocalDateTime vs ZonedDateTime</h1> 
                 
 			</div>
 
@@ -147,120 +145,52 @@
 
 			<!-- Post Content -->
 			<div class="article-post serif-font">
-				<p>While loops help with running code block repeatedly over a condition
-until failure of the condition. Sorting algorithms need to perform repeated
-comparisons and swapping operations over certain conditions and sometimes
-it becomes difficult to understand the loop start and end indexes. While loops 
-help in exactly pointing out what indexes mean and how they are changed within the 
-algorithm. Following are 3 common sorting algorithms which will use while loops
-to perform sorting:</p>
-<h4 id="bubble-sort">Bubble Sort</h4>
-<p>Bubble sort’s core logic it do N-1 loops over the set of N items and on each pass move the highest element to the
-end of the array by comparing and swapping the neighbouring item.</p>
+				<p>Very often we code applications in the real world where we need to store a date
+along with the time. For e.g. Creating an application for Astrology where we want to 
+store the date of birth and time for a person. Or, an appointment application for a pet clinic
+where we want to store the date and time for an appointment. Do we see any need of asking timezone 
+as a data point to be captured? No.</p>
 
-<p>Example of 1st Pass :</p>
+<p>Now imagine you are coding an application for an International sports firm who wants to cover 
+all the events happening around the different parts of the world. Do you see a need of knowing where 
+exactly the event is happening so that we can use that locale information to show the correct event 
+date or time in the UI based on where the webpage is being viewed. Here we should use ZonedDateTime object
+to capture the timezone information as well.</p>
 
-<p>int[] data = {4,3,2,1}</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>i0</th>
-      <th>i1</th>
-      <th>i2</th>
-      <th>i3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><em><strong>4</strong></em></td>
-      <td>3</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td><em><strong>4</strong></em></td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>2</td>
-      <td><em><strong>4</strong></em></td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>2</td>
-      <td>1</td>
-      <td><em><strong>4</strong></em></td>
-    </tr>
-  </tbody>
-</table>
-
-<pre><code class="language-java">private static void bubble(int[] data) {
-        int outerStart = 0;
-        int outerEnd = data.length - 1;
-        int innerStart;
-        int innerEnd;
-
-        while (outerStart &lt;= outerEnd) {
-            innerStart = 1;
-            innerEnd = outerEnd - outerStart;
-            while (innerStart &lt;= innerEnd) {
-                if (data[innerStart] &lt; data[innerStart - 1]) {
-                    int temp = data[innerStart];
-                    data[innerStart] = data[innerStart - 1];
-                    data[innerStart - 1] = temp;
-                }
-                innerStart++;
-            }
-            outerStart++;
-        }
-    }
+<p>The following will give you local date time shown on your system clock but it will not capture any
+timezone information.</p>
+<pre><code class="language-java">LocalDateTime localDateTime = LocalDateTime.now();
 </code></pre>
-<h4 id="insertion-sort">Insertion Sort</h4>
-<p>Insertion sort picks an element (key) and tries to find the correct index on its left subarray where the key belongs and then does the swapping. This results in less number of swappings than bubble sort.</p>
 
-<pre><code class="language-java">private static void insertion(int[] data) {
-        int outerStart = 1;
-        int outerEnd = data.length - 1;
-        while (outerStart &lt;= outerEnd) {
-            int innerStart = outerStart;
-            int key = data[innerStart];
-            while (innerStart &gt; 0 &amp;&amp; key &lt; data[innerStart - 1]) {
-                data[innerStart] = data[innerStart - 1];
-                innerStart--;
-            }
-            data[innerStart] = key;
-            outerStart++;
-        }
-    }
+<h3 id="convert-to-zoneddatetime">Convert to ZonedDateTime</h3>
+<p>We need to add zone id information to the LocalDateTime object, to get the ZonedDateTime object.</p>
+<pre><code class="language-java">ZonedDateTime zonedDateTime = localDateTime.atZone(ZoneId.of("Australia/Sydney"));
 </code></pre>
-<h4 id="selection-sort">Selection Sort</h4>
-<p>Selection sort is the simplest to code, where, for every pass in the loop, index of the minimum element
-in the pass is found and then the item is swapped with the current loop index item.</p>
-<pre><code class="language-java">private static void selection(int[] data) {
-        int outerStart = 0;
-        int outerEnd = data.length - 2;
-        while (outerStart &lt;= outerEnd) {
-            int innerStart = outerStart;
-            int innerEnd = data.length - 1;
-            int smallIndex = innerStart;
-            while (innerStart &lt;= innerEnd) {
-                if (data[innerStart] &lt; data[smallIndex]) {
-                    smallIndex = innerStart;
-                }
-                innerStart++;
-            }
-            int temp = data[outerStart];
-            data[outerStart] = data[smallIndex];
-            data[smallIndex] = temp;
-            outerStart++;
-        }
+
+<p>Here is a test code snippet for more clarity:</p>
+<pre><code class="language-java">import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
+public class LocalDateTimeTest {
+    public static void main(String[] args) {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        ZonedDateTime zonedDateTime = localDateTime.atZone(ZoneId.of("Australia/Sydney"));
+        System.out.println(localDateTime.getHour() + " " + localDateTime.getMinute());
+        System.out.println(zonedDateTime.getHour() + " " + zonedDateTime.getMinute() + zonedDateTime.getOffset());
+        zonedDateTime = ZonedDateTime.now();
+        System.out.println(zonedDateTime.getHour() + " " + zonedDateTime.getMinute() + zonedDateTime.getOffset());
     }
+}
 </code></pre>
+
+<p>The output is:</p>
+
+<p>17 35</p>
+
+<p>17 35+11:00</p>
+
+<p>17 35+11:00</p>
 
                 <div class="clearfix"></div>
 			</div>
@@ -268,7 +198,7 @@ in the pass is found and then the item is swapped with the current loop index it
             <!-- Post Date -->
             <p>
             <small>
-                <span class="post-date"><time class="post-date" datetime="2022-08-12">12 Aug 2022</time></span>           
+                <span class="post-date"><time class="post-date" datetime="2022-11-09">09 Nov 2022</time></span>           
                 
                 </small>
             </p>
@@ -279,13 +209,9 @@ in the pass is found and then the item is swapped with the current loop index it
             <div class="row PageNavigation mt-4 prevnextlinks d-flex justify-content-between">
               
                 <div class="col-md-6 rightborder pl-0">
-                    <a class="thepostlink" href="/sorting-algorithm-quick-view/">&laquo; Sorting algorithms - Quick View</a>
+                    <a class="thepostlink" href="/sorting-with-while-loop/">&laquo; Sorting with while loops</a>
                 </div>
               
-              
-                <div class="col-md-6 text-right pr-0">
-                    <a class="thepostlink" href="/localdatetime-vs-zoneddatetime/">Java LocalDateTime vs ZonedDateTime &raquo;</a>
-                </div>
               
             </div>
             <!-- End Prev/Next -->

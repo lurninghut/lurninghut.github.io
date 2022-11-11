@@ -1,4 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_us"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en_us" /><updated>2022-08-16T11:13:52+00:00</updated><id>/feed.xml</id><title type="html">Lurninghut</title><author><name>Gaurav</name></author><entry><title type="html">Sorting with while loops</title><link href="/sorting-with-while-loop/" rel="alternate" type="text/html" title="Sorting with while loops" /><published>2022-08-12T00:00:00+00:00</published><updated>2022-08-12T00:00:00+00:00</updated><id>/sorting-with-while-loop</id><content type="html" xml:base="/sorting-with-while-loop/"><![CDATA[<p>While loops help with running code block repeatedly over a condition
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_us"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en_us" /><updated>2022-11-11T07:47:45+00:00</updated><id>/feed.xml</id><title type="html">Lurninghut</title><author><name>Gaurav</name></author><entry><title type="html">Java LocalDateTime vs ZonedDateTime</title><link href="/localdatetime-vs-zoneddatetime/" rel="alternate" type="text/html" title="Java LocalDateTime vs ZonedDateTime" /><published>2022-11-09T00:00:00+00:00</published><updated>2022-11-09T00:00:00+00:00</updated><id>/localdatetime-vs-zoneddatetime</id><content type="html" xml:base="/localdatetime-vs-zoneddatetime/"><![CDATA[<p>Very often we code applications in the real world where we need to store a date
+along with the time. For e.g. Creating an application for Astrology where we want to 
+store the date of birth and time for a person. Or, an appointment application for a pet clinic
+where we want to store the date and time for an appointment. Do we see any need of asking timezone 
+as a data point to be captured? No.</p>
+
+<p>Now imagine you are coding an application for an International sports firm who wants to cover 
+all the events happening around the different parts of the world. Do you see a need of knowing where 
+exactly the event is happening so that we can use that locale information to show the correct event 
+date or time in the UI based on where the webpage is being viewed. Here we should use ZonedDateTime object
+to capture the timezone information as well.</p>
+
+<p>The following will give you local date time shown on your system clock but it will not capture any
+timezone information.</p>
+<pre><code class="language-java">LocalDateTime localDateTime = LocalDateTime.now();
+</code></pre>
+
+<h3 id="convert-to-zoneddatetime">Convert to ZonedDateTime</h3>
+<p>We need to add zone id information to the LocalDateTime object, to get the ZonedDateTime object.</p>
+<pre><code class="language-java">ZonedDateTime zonedDateTime = localDateTime.atZone(ZoneId.of("Australia/Sydney"));
+</code></pre>
+
+<p>Here is a test code snippet for more clarity:</p>
+<pre><code class="language-java">import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
+public class LocalDateTimeTest {
+    public static void main(String[] args) {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        ZonedDateTime zonedDateTime = localDateTime.atZone(ZoneId.of("Australia/Sydney"));
+        System.out.println(localDateTime.getHour() + " " + localDateTime.getMinute());
+        System.out.println(zonedDateTime.getHour() + " " + zonedDateTime.getMinute() + zonedDateTime.getOffset());
+        zonedDateTime = ZonedDateTime.now();
+        System.out.println(zonedDateTime.getHour() + " " + zonedDateTime.getMinute() + zonedDateTime.getOffset());
+    }
+}
+</code></pre>
+
+<p>The output is:</p>
+
+<p>17 35</p>
+
+<p>17 35+11:00</p>
+
+<p>17 35+11:00</p>]]></content><author><name>Gaurav</name></author><category term="Java" /><summary type="html"><![CDATA[Very often we code applications in the real world where we need to store a date along with the time. For e.g. Creating an application for Astrology where we want to store the date of birth and time for a person. Or, an appointment application for a pet clinic where we want to store the date and time for an appointment. Do we see any need of asking timezone as a data point to be captured? No.]]></summary></entry><entry><title type="html">Sorting with while loops</title><link href="/sorting-with-while-loop/" rel="alternate" type="text/html" title="Sorting with while loops" /><published>2022-08-12T00:00:00+00:00</published><updated>2022-08-12T00:00:00+00:00</updated><id>/sorting-with-while-loop</id><content type="html" xml:base="/sorting-with-while-loop/"><![CDATA[<p>While loops help with running code block repeatedly over a condition
 until failure of the condition. Sorting algorithms need to perform repeated
 comparisons and swapping operations over certain conditions and sometimes
 it becomes difficult to understand the loop start and end indexes. While loops 
