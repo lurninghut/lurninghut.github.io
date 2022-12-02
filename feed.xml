@@ -1,4 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_us"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en_us" /><updated>2022-11-11T07:51:39+00:00</updated><id>/feed.xml</id><title type="html">Lurninghut</title><author><name>Gaurav</name></author><entry><title type="html">Java LocalDateTime vs ZonedDateTime</title><link href="/localdatetime-vs-zoneddatetime/" rel="alternate" type="text/html" title="Java LocalDateTime vs ZonedDateTime" /><published>2022-11-09T00:00:00+00:00</published><updated>2022-11-09T00:00:00+00:00</updated><id>/localdatetime-vs-zoneddatetime</id><content type="html" xml:base="/localdatetime-vs-zoneddatetime/"><![CDATA[<p>Very often we code applications in the real world where we need to store a date
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en_us"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en_us" /><updated>2022-12-02T14:03:58+00:00</updated><id>/feed.xml</id><title type="html">Lurninghut</title><author><name>Gaurav</name></author><entry><title type="html">Using AWS Organizations</title><link href="/using-aws-organizations/" rel="alternate" type="text/html" title="Using AWS Organizations" /><published>2022-12-02T00:00:00+00:00</published><updated>2022-12-02T00:00:00+00:00</updated><id>/using-aws-organizations</id><content type="html" xml:base="/using-aws-organizations/"><![CDATA[<p>One company has many departments. Imagine if a company is using only one single AWS account for all the departments.
+Following issues are likely to surface:</p>
+<ul>
+  <li>No clear visibility</li>
+  <li>No ownership</li>
+  <li>Forgotten resources (EC2 running for years)</li>
+  <li>No cost optimization</li>
+  <li>No separation of environments (same dev/test/prod)</li>
+  <li>No proper user management leading to accidental deletions of production workloads</li>
+</ul>
+
+<p>AWS organizations allows the following:</p>
+<ul>
+  <li>Link multiple AWS accounts to consolidate billing and cost reporting</li>
+  <li>Share resources</li>
+  <li>Common IAM policies and other access control strategies across accounts</li>
+  <li>It’s free</li>
+</ul>
+
+<h3 id="root-master-account">Root Master Account</h3>
+<p>The account used to create the organization using AWS console is termed as root master account.
+We need to protect the root master account for our organization by following general security practices like:</p>
+<ul>
+  <li>Using secrets manager</li>
+  <li>Generating strong random password</li>
+  <li>Enabling Multi-factor authentication</li>
+</ul>
+
+<p>The ‘Create organization’ pops up two options:</p>
+<ul>
+  <li>Create a full organization with single payer and centralized cost tracking, lets you create and invite accoutns, allows policy based
+ controls and helps simplify organization wide management of AWS services</li>
+  <li>Create an organization with only consolidated billing features.</li>
+</ul>
+
+<p>Root master account cannot join another organization until its current organization is deleted.</p>
+
+<p>Once an organization is created, we can add member accounts (existing or new).</p>
+
+<p>For an existing account the root user of the account must accept the invite.</p>
+
+<p>Organization Units can be created and the accounts can be assigned to them.</p>]]></content><author><name>Gaurav</name></author><category term="Java" /><category term="AWS" /><summary type="html"><![CDATA[One company has many departments. Imagine if a company is using only one single AWS account for all the departments. Following issues are likely to surface: No clear visibility No ownership Forgotten resources (EC2 running for years) No cost optimization No separation of environments (same dev/test/prod) No proper user management leading to accidental deletions of production workloads]]></summary></entry><entry><title type="html">Java LocalDateTime vs ZonedDateTime</title><link href="/localdatetime-vs-zoneddatetime/" rel="alternate" type="text/html" title="Java LocalDateTime vs ZonedDateTime" /><published>2022-11-09T00:00:00+00:00</published><updated>2022-11-09T00:00:00+00:00</updated><id>/localdatetime-vs-zoneddatetime</id><content type="html" xml:base="/localdatetime-vs-zoneddatetime/"><![CDATA[<p>Very often we code applications in the real world where we need to store a date
 along with the time. For e.g. Creating an application for Astrology where we want to 
 store the date of birth and time for a person. Or, an appointment application for a pet clinic
 where we want to store the date and time for an appointment. Do we see any need of asking timezone 
@@ -352,95 +393,7 @@ dependencies {
 
 <p>Financial services require to provide enhanced customer experience by enabling a single strategy for communications with customers using mobile devices, securing environment using improved fraud detection engines. Kafka helps migrating all legacy systems by providing solutions around event processing.</p>
 
-<p>Hope all these examples give a fair idea of what industries are doing with Apache Kafka.</p>]]></content><author><name>Gaurav</name></author><category term="Kafka" /><summary type="html"><![CDATA[If you wonder what are different industries doing with Apache Kafka, here are some insights.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/assets/images/motivation-for-kafka/header-1.png" /><media:content medium="image" url="/assets/images/motivation-for-kafka/header-1.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Github Actions - Create Automatic Pull Request</title><link href="/github-actions-create-automatic-pull-request/" rel="alternate" type="text/html" title="Github Actions - Create Automatic Pull Request" /><published>2021-10-02T00:00:00+00:00</published><updated>2021-10-02T00:00:00+00:00</updated><id>/github-actions-create-automatic-pull-request</id><content type="html" xml:base="/github-actions-create-automatic-pull-request/"><![CDATA[<p>While working with automatic workflows using Github actions, there can be scenarios where some changes are to be done in the repository during the execution of the build steps. 
-A very common example is updating information of the user to a file ‘Author’ in the code base every time a commit is pushed. 
-In this demo we will also try to create a PR automatically by creating a branch which will have one single commit to a file called ‘Author’ with the information of the user who pushed the recent commit to main branch.</p>
-
-<h3 id="demo">Demo</h3>
-
-<p><a href="https://youtu.be/NfsrMix5Qvc"><img src="/assets/images/github-actions-create-automatic-pull-request/youtube-screenshot.png" alt="Demo" /></a></p>
-
-<p>We will proceed incrementally with the configuration file changes. Let’s create a new workflow file under .github/workflows</p>
-
-<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-1.png" alt="Screenshot 1" /></p>
-
-<p>Add name and an event which we care for during our workflow:</p>
-
-<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-2.png" alt="Screenshot 2" /></p>
-
-<p><strong><em>actions/checkout@v2</em></strong></p>
-
-<p>Add first step as part of the jobs where we will checkout the code from main branch:</p>
-
-<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-3.png" alt="Screenshot 3" /></p>
-
-<p><strong><em>rlespinasse/git-commit-data-action@v1.x</em></strong></p>
-
-<p>Then we will add another action step which will export details of the recent commit as environment variables like GIT_COMMIT_AUTHOR_NAME.</p>
-
-<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-4.png" alt="Screenshot 4" /></p>
-
-<p>Then we will add details extracted from previous step to Author file in the repository:</p>
-
-<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-6.png" alt="Screenshot 6" /></p>
-
-<p><strong><em>peter-evans/create-pull-request@v3</em></strong></p>
-
-<p>And as part of final step we will use action which will create a new branch, commit the change added in the previous step to the Author file and create the pull request. The ‘delete-branch’ config will ensure that the branch will be deleted after pull request is closed.</p>
-
-<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-5.png" alt="Screenshot 5" /></p>
-
-<p>When we finish with this workflow file, we will commit it to the repo and push the commit to Github main branch. The push will trigger the workflow in Github as follows:</p>
-
-<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-7.png" alt="Screenshot 7" /></p>
-
-<p>And once the workflow is finished we can navigate to the pull request tab to see the created pull request:</p>
-
-<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-8.png" alt="Screenshot 8" /></p>
-
-<p>The complete workflow file is as follows:</p>
-
-<details>
-    <summary>Expand to see code!</summary>
-    
-    <pre>
-    
-        name: Demo to create automatic PR
-        
-        on:
-        push:
-        branches:
-        - main
-        
-        jobs:
-        updateAuthor:
-        runs-on: ubuntu-latest
-        steps:
-        - name: checking out code
-        uses: actions/checkout@v2
-        
-        - name: extract git commit data
-        uses: rlespinasse/git-commit-data-action@v1.x
-        
-        - name: Update author information
-        run: echo $ &gt; AUTHOR
-        
-        - name: Raise PR
-        uses: peter-evans/create-pull-request@v3
-        with:
-        branch: "auto-pr-branch"
-        base: main
-        title: "demo for auto pr"
-        committer: $ &lt;$"&gt;
-        author: $ &lt;$"&gt;
-        body:
-        This is to show automatic PR creation
-        token: $
-        delete-branch: true
-    </pre>
-</details>
-
-<p>So we saw how easy it is to create an automatic pull request using appropriate Github actions.</p>]]></content><author><name>Gaurav</name></author><category term="Git" /><summary type="html"><![CDATA[While working with automatic workflows using Github actions, there can be scenarios where some changes are to be done in the repository during the execution of the build steps. A very common example is updating information of the user to a file ‘Author’ in the code base every time a commit is pushed. In this demo we will also try to create a PR automatically by creating a branch which will have one single commit to a file called ‘Author’ with the information of the user who pushed the recent commit to main branch.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/assets/images/github-actions-create-automatic-pull-request/header-1.svg" /><media:content medium="image" url="/assets/images/github-actions-create-automatic-pull-request/header-1.svg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Github Actions: Building Spring boot application</title><link href="/github-actions-spring-boot/" rel="alternate" type="text/html" title="Github Actions: Building Spring boot application" /><published>2021-10-02T00:00:00+00:00</published><updated>2021-10-02T00:00:00+00:00</updated><id>/github-actions-spring-boot</id><content type="html" xml:base="/github-actions-spring-boot/"><![CDATA[<p>Github now a days is not just used as a central Git repository by the organisations but also as a tool for orchestration of CI/CD pipelines. Github actions automate all the software development workflows and enable build, test and deployment right from Github. In the demo we will see how we can use Github actions for basic development tasks by automating them using some configuration files.</p>
+<p>Hope all these examples give a fair idea of what industries are doing with Apache Kafka.</p>]]></content><author><name>Gaurav</name></author><category term="Kafka" /><summary type="html"><![CDATA[If you wonder what are different industries doing with Apache Kafka, here are some insights.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/assets/images/motivation-for-kafka/header-1.png" /><media:content medium="image" url="/assets/images/motivation-for-kafka/header-1.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Github Actions: Building Spring boot application</title><link href="/github-actions-spring-boot/" rel="alternate" type="text/html" title="Github Actions: Building Spring boot application" /><published>2021-10-02T00:00:00+00:00</published><updated>2021-10-02T00:00:00+00:00</updated><id>/github-actions-spring-boot</id><content type="html" xml:base="/github-actions-spring-boot/"><![CDATA[<p>Github now a days is not just used as a central Git repository by the organisations but also as a tool for orchestration of CI/CD pipelines. Github actions automate all the software development workflows and enable build, test and deployment right from Github. In the demo we will see how we can use Github actions for basic development tasks by automating them using some configuration files.</p>
 
 <p><strong>Demo</strong></p>
 
@@ -532,7 +485,95 @@ In this demo we will also try to create a PR automatically by creating a branch 
 
 <p><img src="/assets/images/github-actions-spring-boot/Screenshot-11.png" height="400px" width="600px" /></p>
 
-<p>All the above demonstrated how we can build any Spring boot app using Github Actions.</p>]]></content><author><name>Gaurav</name></author><category term="GIT" /><summary type="html"><![CDATA[Github now a days is not just used as a central Git repository by the organisations but also as a tool for orchestration of CI/CD pipelines. Github actions automate all the software development workflows and enable build, test and deployment right from Github. In the demo we will see how we can use Github actions for basic development tasks by automating them using some configuration files.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/assets/images/github-actions-spring-boot/header-1.png" /><media:content medium="image" url="/assets/images/github-actions-spring-boot/header-1.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">XSS - Cross site scripting Java Demo</title><link href="/xss-cross-site-scripting-java-demo/" rel="alternate" type="text/html" title="XSS - Cross site scripting Java Demo" /><published>2021-09-24T00:00:00+00:00</published><updated>2021-09-24T00:00:00+00:00</updated><id>/xss-cross-site-scripting-java-demo</id><content type="html" xml:base="/xss-cross-site-scripting-java-demo/"><![CDATA[<p>Ever wondered how hackers get access to someone’s account on any website? 
+<p>All the above demonstrated how we can build any Spring boot app using Github Actions.</p>]]></content><author><name>Gaurav</name></author><category term="GIT" /><summary type="html"><![CDATA[Github now a days is not just used as a central Git repository by the organisations but also as a tool for orchestration of CI/CD pipelines. Github actions automate all the software development workflows and enable build, test and deployment right from Github. In the demo we will see how we can use Github actions for basic development tasks by automating them using some configuration files.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/assets/images/github-actions-spring-boot/header-1.png" /><media:content medium="image" url="/assets/images/github-actions-spring-boot/header-1.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Github Actions - Create Automatic Pull Request</title><link href="/github-actions-create-automatic-pull-request/" rel="alternate" type="text/html" title="Github Actions - Create Automatic Pull Request" /><published>2021-10-02T00:00:00+00:00</published><updated>2021-10-02T00:00:00+00:00</updated><id>/github-actions-create-automatic-pull-request</id><content type="html" xml:base="/github-actions-create-automatic-pull-request/"><![CDATA[<p>While working with automatic workflows using Github actions, there can be scenarios where some changes are to be done in the repository during the execution of the build steps. 
+A very common example is updating information of the user to a file ‘Author’ in the code base every time a commit is pushed. 
+In this demo we will also try to create a PR automatically by creating a branch which will have one single commit to a file called ‘Author’ with the information of the user who pushed the recent commit to main branch.</p>
+
+<h3 id="demo">Demo</h3>
+
+<p><a href="https://youtu.be/NfsrMix5Qvc"><img src="/assets/images/github-actions-create-automatic-pull-request/youtube-screenshot.png" alt="Demo" /></a></p>
+
+<p>We will proceed incrementally with the configuration file changes. Let’s create a new workflow file under .github/workflows</p>
+
+<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-1.png" alt="Screenshot 1" /></p>
+
+<p>Add name and an event which we care for during our workflow:</p>
+
+<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-2.png" alt="Screenshot 2" /></p>
+
+<p><strong><em>actions/checkout@v2</em></strong></p>
+
+<p>Add first step as part of the jobs where we will checkout the code from main branch:</p>
+
+<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-3.png" alt="Screenshot 3" /></p>
+
+<p><strong><em>rlespinasse/git-commit-data-action@v1.x</em></strong></p>
+
+<p>Then we will add another action step which will export details of the recent commit as environment variables like GIT_COMMIT_AUTHOR_NAME.</p>
+
+<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-4.png" alt="Screenshot 4" /></p>
+
+<p>Then we will add details extracted from previous step to Author file in the repository:</p>
+
+<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-6.png" alt="Screenshot 6" /></p>
+
+<p><strong><em>peter-evans/create-pull-request@v3</em></strong></p>
+
+<p>And as part of final step we will use action which will create a new branch, commit the change added in the previous step to the Author file and create the pull request. The ‘delete-branch’ config will ensure that the branch will be deleted after pull request is closed.</p>
+
+<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-5.png" alt="Screenshot 5" /></p>
+
+<p>When we finish with this workflow file, we will commit it to the repo and push the commit to Github main branch. The push will trigger the workflow in Github as follows:</p>
+
+<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-7.png" alt="Screenshot 7" /></p>
+
+<p>And once the workflow is finished we can navigate to the pull request tab to see the created pull request:</p>
+
+<p><img src="/assets/images/github-actions-create-automatic-pull-request/Screenshot-8.png" alt="Screenshot 8" /></p>
+
+<p>The complete workflow file is as follows:</p>
+
+<details>
+    <summary>Expand to see code!</summary>
+    
+    <pre>
+    
+        name: Demo to create automatic PR
+        
+        on:
+        push:
+        branches:
+        - main
+        
+        jobs:
+        updateAuthor:
+        runs-on: ubuntu-latest
+        steps:
+        - name: checking out code
+        uses: actions/checkout@v2
+        
+        - name: extract git commit data
+        uses: rlespinasse/git-commit-data-action@v1.x
+        
+        - name: Update author information
+        run: echo $ &gt; AUTHOR
+        
+        - name: Raise PR
+        uses: peter-evans/create-pull-request@v3
+        with:
+        branch: "auto-pr-branch"
+        base: main
+        title: "demo for auto pr"
+        committer: $ &lt;$"&gt;
+        author: $ &lt;$"&gt;
+        body:
+        This is to show automatic PR creation
+        token: $
+        delete-branch: true
+    </pre>
+</details>
+
+<p>So we saw how easy it is to create an automatic pull request using appropriate Github actions.</p>]]></content><author><name>Gaurav</name></author><category term="Git" /><summary type="html"><![CDATA[While working with automatic workflows using Github actions, there can be scenarios where some changes are to be done in the repository during the execution of the build steps. A very common example is updating information of the user to a file ‘Author’ in the code base every time a commit is pushed. In this demo we will also try to create a PR automatically by creating a branch which will have one single commit to a file called ‘Author’ with the information of the user who pushed the recent commit to main branch.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/assets/images/github-actions-create-automatic-pull-request/header-1.svg" /><media:content medium="image" url="/assets/images/github-actions-create-automatic-pull-request/header-1.svg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">XSS - Cross site scripting Java Demo</title><link href="/xss-cross-site-scripting-java-demo/" rel="alternate" type="text/html" title="XSS - Cross site scripting Java Demo" /><published>2021-09-24T00:00:00+00:00</published><updated>2021-09-24T00:00:00+00:00</updated><id>/xss-cross-site-scripting-java-demo</id><content type="html" xml:base="/xss-cross-site-scripting-java-demo/"><![CDATA[<p>Ever wondered how hackers get access to someone’s account on any website? 
 Or what really happens when you click on an email link received from an unknown address which your organisation 
 requests you not to click and report their cyber security team as part of mandatory security training. 
 The reason is to prevent you from becoming a victim of cross site scripting practice used by hackers. 
