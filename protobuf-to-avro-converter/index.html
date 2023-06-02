@@ -5,23 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="/assets/images/favicon.ico">
 
-<title>Using AWS Organizations | Lurninghut</title>
+<title>Protobuf to Avro Converter | Lurninghut</title>
 
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Using AWS Organizations | Lurninghut</title>
+<title>Protobuf to Avro Converter | Lurninghut</title>
 <meta name="generator" content="Jekyll v4.2.2" />
-<meta property="og:title" content="Using AWS Organizations" />
+<meta property="og:title" content="Protobuf to Avro Converter" />
 <meta name="author" content="Gaurav" />
 <meta property="og:locale" content="en_us" />
-<meta name="description" content="One company has many departments. Imagine if a company is using only one single AWS account for all the departments. Following issues are likely to surface: No clear visibility No ownership Forgotten resources (EC2 running for years) No cost optimization No separation of environments (same dev/test/prod) No proper user management leading to accidental deletions of production workloads" />
-<meta property="og:description" content="One company has many departments. Imagine if a company is using only one single AWS account for all the departments. Following issues are likely to surface: No clear visibility No ownership Forgotten resources (EC2 running for years) No cost optimization No separation of environments (same dev/test/prod) No proper user management leading to accidental deletions of production workloads" />
+<meta name="description" content="Protobuf vs Avro In Protobuf there is no way to define or refer an external specification (schema) within a Protocol Buffers file. Avro stores the data definition in JSON format making it easy to read and interpret. For any schema change in Protobuf, the code needs to be regenerated, while in Avro the new schema will become part of the message itself." />
+<meta property="og:description" content="Protobuf vs Avro In Protobuf there is no way to define or refer an external specification (schema) within a Protocol Buffers file. Avro stores the data definition in JSON format making it easy to read and interpret. For any schema change in Protobuf, the code needs to be regenerated, while in Avro the new schema will become part of the message itself." />
 <meta property="og:site_name" content="Lurninghut" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-12-02T00:00:00+00:00" />
+<meta property="article:published_time" content="2023-06-02T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Using AWS Organizations" />
+<meta property="twitter:title" content="Protobuf to Avro Converter" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Gaurav"},"dateModified":"2022-12-02T00:00:00+00:00","datePublished":"2022-12-02T00:00:00+00:00","description":"One company has many departments. Imagine if a company is using only one single AWS account for all the departments. Following issues are likely to surface: No clear visibility No ownership Forgotten resources (EC2 running for years) No cost optimization No separation of environments (same dev/test/prod) No proper user management leading to accidental deletions of production workloads","headline":"Using AWS Organizations","mainEntityOfPage":{"@type":"WebPage","@id":"/using-aws-organizations/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/logo.png"},"name":"Gaurav"},"url":"/using-aws-organizations/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Gaurav"},"dateModified":"2023-06-02T00:00:00+00:00","datePublished":"2023-06-02T00:00:00+00:00","description":"Protobuf vs Avro In Protobuf there is no way to define or refer an external specification (schema) within a Protocol Buffers file. Avro stores the data definition in JSON format making it easy to read and interpret. For any schema change in Protobuf, the code needs to be regenerated, while in Avro the new schema will become part of the message itself.","headline":"Protobuf to Avro Converter","mainEntityOfPage":{"@type":"WebPage","@id":"/protobuf-to-avro-converter/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/logo.png"},"name":"Gaurav"},"url":"/protobuf-to-avro-converter/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -129,10 +129,6 @@
                         
                         
                         <li>
-                         <a href="/categories#aws">AWS</a>
-                        </li>
-                        
-                        <li>
                          <a href="/categories#java">Java</a>
                         </li>
                         
@@ -141,7 +137,7 @@
                 <!-- End Categories -->
                 
                 <!-- Post Title -->
-				<h1 class="posttitle">Using AWS Organizations</h1> 
+				<h1 class="posttitle">Protobuf to Avro Converter</h1> 
                 
 			</div>
 
@@ -149,48 +145,127 @@
 
 			<!-- Post Content -->
 			<div class="article-post serif-font">
-				<p>One company has many departments. Imagine if a company is using only one single AWS account for all the departments.
-Following issues are likely to surface:</p>
+				<h3 id="protobuf-vs-avro">Protobuf vs Avro</h3>
 <ul>
-  <li>No clear visibility</li>
-  <li>No ownership</li>
-  <li>Forgotten resources (EC2 running for years)</li>
-  <li>No cost optimization</li>
-  <li>No separation of environments (same dev/test/prod)</li>
-  <li>No proper user management leading to accidental deletions of production workloads</li>
+  <li>In Protobuf there is no way to define or refer an external specification (schema) within a Protocol Buffers file.</li>
+  <li>Avro stores the data definition in JSON format making it easy to read and interpret.</li>
+  <li>For any schema change in Protobuf, the code needs to be regenerated, while in Avro the new schema will become part of the message itself.</li>
 </ul>
 
-<p>AWS organizations allows the following:</p>
-<ul>
-  <li>Link multiple AWS accounts to consolidate billing and cost reporting</li>
-  <li>Share resources</li>
-  <li>Common IAM policies and other access control strategies across accounts</li>
-  <li>It’s free</li>
-</ul>
+<p>The conversion from Protobuf to Avro is helpful in the scenario where we want to share the data along with the schema.</p>
 
-<h3 id="root-master-account">Root Master Account</h3>
-<p>The account used to create the organization using AWS console is termed as root master account.
-We need to protect the root master account for our organization by following general security practices like:</p>
-<ul>
-  <li>Using secrets manager</li>
-  <li>Generating strong random password</li>
-  <li>Enabling Multi-factor authentication</li>
-</ul>
+<p>Let’s start the exercise to create a Protobuf message and then convert it into Avro file.</p>
 
-<p>The ‘Create organization’ pops up two options:</p>
-<ul>
-  <li>Create a full organization with single payer and centralized cost tracking, lets you create and invite accoutns, allows policy based
- controls and helps simplify organization wide management of AWS services</li>
-  <li>Create an organization with only consolidated billing features.</li>
-</ul>
+<h4 id="create-bookproto">Create book.proto</h4>
 
-<p>Root master account cannot join another organization until its current organization is deleted.</p>
+<pre><code class="language-protobuf">syntax = 'proto3';
 
-<p>Once an organization is created, we can add member accounts (existing or new).</p>
+package tutorial;
+option java_package = 'com.tutorial';
+option java_multiple_files = true;
 
-<p>For an existing account the root user of the account must accept the invite.</p>
+message Book {
+  string name = 1;
+  string author = 2;
+  string title = 3;
+  bool read = 4;
+}
+</code></pre>
 
-<p>Organization Units can be created and the accounts can be assigned to them.</p>
+<h3 id="create-a-buildgradle-with-protobuf-gradle-plugin">Create a build.gradle with protobuf gradle plugin</h3>
+
+<pre><code>buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.12'
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+apply plugin: 'com.google.protobuf'
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.22.3'
+    implementation group: 'org.apache.avro', name: 'avro', version: '1.11.1'
+    implementation group: 'org.apache.avro', name: 'avro-protobuf', version: '1.11.1'
+}
+
+sourceSets.main.java.srcDirs = ['build/generated/source/proto/main/java','src/main/java']
+</code></pre>
+
+<h4 id="create-applicationjava">Create Application.java</h4>
+<pre><code class="language-java">import com.google.protobuf.GeneratedMessageV3;
+import org.apache.avro.Schema;
+import org.apache.avro.file.DataFileWriter;
+import org.apache.avro.protobuf.ProtobufData;
+import org.apache.avro.protobuf.ProtobufDatumWriter;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class Application {
+    public static void main(String[] args) throws IOException {
+        Book cleanCode = Book.newBuilder()
+                .setRead(true)
+                .setAuthor("Robert C. Martin")
+                .setTitle("Clean Code")
+                .setName("Clean Code by Robert C. Martin")
+                .build();
+        ProtobufDatumWriter pbWriter = new ProtobufDatumWriter(cleanCode.getClass());
+        Schema schema = ProtobufData.get().getSchema(cleanCode.getClass());
+
+        File avroFile = new File("Book.avro");
+        try (DataFileWriter&lt;GeneratedMessageV3&gt; dataFileWriter = new DataFileWriter&lt;&gt;(pbWriter)) {
+            dataFileWriter.create(schema, avroFile);
+            dataFileWriter.append(cleanCode);
+            dataFileWriter.flush();
+        }
+    }
+}
+</code></pre>
+
+<p>Following is the code to read back the .avro file:</p>
+<pre><code class="language-java">import org.apache.avro.Schema;
+import org.apache.avro.file.DataFileReader;
+import org.apache.avro.file.SeekableByteArrayInput;
+import org.apache.avro.generic.GenericDatumReader;
+import org.apache.avro.generic.GenericRecord;
+import org.apache.avro.io.DatumReader;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class ReadAvro {
+    public static void main(String[] args) throws IOException {
+        DatumReader datumReader = new GenericDatumReader();
+        GenericRecord genericRecord = null;
+        FileInputStream fileInputStream = new FileInputStream("Book.avro");
+        DataFileReader dataFileReader = new DataFileReader(new SeekableByteArrayInput(fileInputStream.readAllBytes()), datumReader);
+        while (dataFileReader.hasNext()) {
+            genericRecord = (GenericRecord) dataFileReader.next();
+        }
+        System.out.println(genericRecord.getSchema().getFields().size());
+        for (Schema.Field field : genericRecord.getSchema().getFields()) {
+            System.out.println(field.name() + ": " + genericRecord.get(field.name()));
+        }
+    }
+}
+</code></pre>
 
                 <div class="clearfix"></div>
 			</div>
@@ -198,7 +273,7 @@ We need to protect the root master account for our organization by following gen
             <!-- Post Date -->
             <p>
             <small>
-                <span class="post-date"><time class="post-date" datetime="2022-12-02">02 Dec 2022</time></span>           
+                <span class="post-date"><time class="post-date" datetime="2023-06-02">02 Jun 2023</time></span>           
                 
                 </small>
             </p>
@@ -209,13 +284,9 @@ We need to protect the root master account for our organization by following gen
             <div class="row PageNavigation mt-4 prevnextlinks d-flex justify-content-between">
               
                 <div class="col-md-6 rightborder pl-0">
-                    <a class="thepostlink" href="/localdatetime-vs-zoneddatetime/">&laquo; Java LocalDateTime vs ZonedDateTime</a>
+                    <a class="thepostlink" href="/using-aws-organizations/">&laquo; Using AWS Organizations</a>
                 </div>
               
-              
-                <div class="col-md-6 text-right pr-0">
-                    <a class="thepostlink" href="/protobuf-to-avro-converter/">Protobuf to Avro Converter &raquo;</a>
-                </div>
               
             </div>
             <!-- End Prev/Next -->
